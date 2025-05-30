@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style3.css">
+  <title>Video Background with Toggle Audio</title>
+  <style>
+    /* Bạn có thể chuyển đoạn CSS này sang style3.css nếu muốn */
+    #audio-toggle {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #000000aa;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+  </style>
+</head>
+<body>
+
+  <video autoplay loop muted playsinline id="bg-video">
+    <source src="Makatokyo (1).mp4" type="video/mp4">
+    Trình duyệt của bạn không hỗ trợ video HTML5.
+  </video>
+
+  <button id="audio-toggle">Bật âm thanh</button>
+
+  <script>
+    const video = document.getElementById('bg-video');
+    const button = document.getElementById('audio-toggle');
+
+    button.addEventListener('click', () => {
+      if (video.muted) {
+        video.muted = false;
+        video.play();
+        button.textContent = 'Tắt âm thanh';
+      } else {
+        video.muted = true;
+        button.textContent = 'Bật âm thanh';
+      }
+    });
+  </script>
+
+</body>
+</html>
